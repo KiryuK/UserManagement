@@ -1,0 +1,25 @@
+﻿@page "/user/{Id:int}/{Name}"
+@using Application
+
+<h3>User Details</h3>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">ID: @Id</h6>
+        <p class="card-text">
+            <strong>Email:</strong> @ResolvedEmail <br />
+            <strong>Phone:</strong> @ResolvedPhone
+        </p>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    [Parameter] public string Name { get; set; }
+
+    // In a real app, fetch full details by ID here.
+    // For this demo, we mock the extra data based on the ID/Name provided.
+    private string ResolvedEmail => $"{Name.Replace(" ", "").ToLower()}@test.com";
+    private string ResolvedPhone => "555-010" + Id;
+}

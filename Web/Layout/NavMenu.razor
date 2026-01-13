@@ -1,0 +1,104 @@
+﻿@inject HttpClient Http
+@inject NavigationManager Nav
+@inject Web.Services.AppState AppState
+@using Application
+@implements IDisposable
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">User Mgmt</a>
+    </div>
+</div>
+
+<div class="p-2">
+    <input @oninput="OnInput" class="form-control" placeholder="Search users..." />
+
+    @if (searchResults.Any())
+    {
+        <ul class="list-group position-absolute" style="z-index: 1000; width: 90%;">
+            @foreach (var user in searchResults)
+            {
+                <li class="list-group-item list-group-item-action"
+                    @onclick="() => SelectUser(user)"
+                    style="cursor:pointer">
+                    @user.Name
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+<div class="@NavMenuCssClass">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        @foreach (var user in AppState.OpenUsers)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="@($"user/{user.Id}/{user.Name}")">
+                    <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> @user.Name
+                </NavLink>
+            </div>
+        }
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private List<User> searchResults = new();
+
+    protected override void OnInitialized()
+    {
+        // Subscribe to state changes to update sidebar when users are added
+        AppState.OnChange += StateHasChanged;
+    }
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async Task OnInput(ChangeEventArgs e)
+    {
+        var term = e.Value?.ToString();
+        if (!string.IsNullOrWhiteSpace(term))
+        {
+            try
+            {
+                searchResults = await Http.GetFromJsonAsync<List<User>>($"api/user?term={term}") ?? new();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"API Error: {ex.Message}");
+                // Optional: Set searchResults to empty to avoid UI confusion
+                searchResults.Clear();
+            }
+        }
+        else
+        {
+            searchResults.Clear();
+        }
+    }
+
+    private void SelectUser(User user)
+    {
+        // Add to global state (Sidebar)
+        AppState.AddUser(user);
+
+        // Clear search
+        searchResults.Clear();
+
+        // Navigate to the user page
+        Nav.NavigateTo($"user/{user.Id}/{user.Name}");
+    }
+
+    public void Dispose()
+    {
+        AppState.OnChange -= StateHasChanged;
+    }
+}
