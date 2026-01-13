@@ -11,27 +11,34 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Search([FromQuery] string term)
     {
-        // 1. Check if file exists to avoid crashing
-        if (!System.IO.File.Exists("users.json"))
-        {
-            return Problem("Database file 'users.json' not found on server.");
-        }
+        if (!System.IO.File.Exists("users.json")) return Problem("Database missing.");
 
-        // 2. Read file
         var json = await System.IO.File.ReadAllTextAsync("users.json");
-
-        // 3. Handle empty file case
         if (string.IsNullOrWhiteSpace(json)) return Ok(new List<User>());
 
         var users = JsonSerializer.Deserialize<List<User>>(json);
-
-        // 4. Default to empty list if search term is empty
         if (string.IsNullOrWhiteSpace(term)) return Ok(new List<User>());
 
         var results = users?
-            .Where(u => u.Name.Contains(term, StringComparison.OrdinalIgnoreCase))
+            .Where(u =>
+                u.Name.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                u.IdentificationNumber.Contains(term, StringComparison.OrdinalIgnoreCase))
             .ToList();
 
         return Ok(results);
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        if (!System.IO.File.Exists("users.json")) return NotFound();
+
+        var json = await System.IO.File.ReadAllTextAsync("users.json");
+        var users = JsonSerializer.Deserialize<List<User>>(json);
+
+        var user = users?.FirstOrDefault(u => u.Id == id);
+
+        if (user == null) return NotFound();
+
+        return Ok(user);
     }
 }

@@ -39,8 +39,21 @@
         @foreach (var user in AppState.OpenUsers)
         {
             <div class="nav-item px-3">
-                <NavLink class="nav-link" href="@($"user/{user.Id}/{user.Name}")">
-                    <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> @user.Name
+                <NavLink class="nav-link d-flex justify-content-between align-items-center"
+                         href="@($"user/{user.Id}/{GetFriendlyUrl(user)}")">
+
+                    <span class="text-truncate">
+                        <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> @user.Name
+                    </span>
+
+                    <span class="bi bi-x text-white p-1"
+                          style="cursor: pointer; font-size: 1.2rem; line-height: 0.8;"
+                          title="Close"
+                          @onclick:preventDefault
+                          @onclick:stopPropagation
+                          @onclick="() => CloseUser(user)">
+                        &times;
+                    </span>
                 </NavLink>
             </div>
         }
@@ -52,16 +65,13 @@
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
     private List<User> searchResults = new();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        // Subscribe to state changes to update sidebar when users are added
         AppState.OnChange += StateHasChanged;
+        await AppState.InitializeAsync();
     }
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+    private void ToggleNavMenu() => collapseNavMenu = !collapseNavMenu;
 
     private async Task OnInput(ChangeEventArgs e)
     {
@@ -75,7 +85,6 @@
             catch (Exception ex)
             {
                 Console.WriteLine($"API Error: {ex.Message}");
-                // Optional: Set searchResults to empty to avoid UI confusion
                 searchResults.Clear();
             }
         }
@@ -85,16 +94,23 @@
         }
     }
 
-    private void SelectUser(User user)
+    private async Task SelectUser(User user)
     {
-        // Add to global state (Sidebar)
-        AppState.AddUser(user);
-
-        // Clear search
+        await AppState.AddUser(user);
         searchResults.Clear();
+        Nav.NavigateTo($"user/{user.Id}/{GetFriendlyUrl(user)}");
+    }
 
-        // Navigate to the user page
-        Nav.NavigateTo($"user/{user.Id}/{user.Name}");
+    private async Task CloseUser(User user)
+    {
+        await AppState.RemoveUser(user);
+    }
+
+    // Hilfsmethode für saubere URLs (z.B. entfernt Punkte bei "Dr.")
+    private string GetFriendlyUrl(User user)
+    {
+        var cleanName = user.Name.Replace(".", "").Replace(" ", "-");
+        return Uri.EscapeDataString(cleanName);
     }
 
     public void Dispose()

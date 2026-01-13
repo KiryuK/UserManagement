@@ -1,25 +1,57 @@
 ﻿@page "/user/{Id:int}/{Name}"
 @using Application
+@inject HttpClient Http
 
-<h3>User Details</h3>
-
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">@Name</h5>
-        <h6 class="card-subtitle mb-2 text-muted">ID: @Id</h6>
-        <p class="card-text">
-            <strong>Email:</strong> @ResolvedEmail <br />
-            <strong>Phone:</strong> @ResolvedPhone
-        </p>
+@if (user == null)
+{
+    <div class="d-flex justify-content-center mt-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <div class="card shadow-sm mt-3">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">@user.Name</h3>
+            <span class="badge bg-light text-dark">@user.Role</span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5 class="text-secondary border-bottom pb-2">Personal Info</h5>
+                    <p class="mb-1"><strong>Email:</strong> <a href="mailto:@user.Email">@user.Email</a></p>
+                    <p class="mb-1"><strong>Phone:</strong> @user.Phone</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5 class="text-secondary border-bottom pb-2">Academic Info</h5>
+                    <p class="mb-1"><strong>ID Number:</strong> <span class="font-monospace bg-light px-1">@user.IdentificationNumber</span></p>
+                    <p class="mb-1"><strong>Faculty:</strong> @user.Faculty</p>
+                    <p class="mb-1"><strong>Department:</strong> @user.Department</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 @code {
     [Parameter] public int Id { get; set; }
-    [Parameter] public string Name { get; set; }
+    [Parameter] public string? Name { get; set; }
 
-    // In a real app, fetch full details by ID here.
-    // For this demo, we mock the extra data based on the ID/Name provided.
-    private string ResolvedEmail => $"{Name.Replace(" ", "").ToLower()}@test.com";
-    private string ResolvedPhone => "555-010" + Id;
+    private User? user;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        user = null;
+
+        try
+        {
+            user = await Http.GetFromJsonAsync<User>($"api/user/{Id}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Laden des Users: {ex.Message}");
+        }
+    }
 }

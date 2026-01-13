@@ -2,19 +2,151 @@
   {
     "Id": 1,
     "Name": "Alice Schmidt",
-    "Email": "alice@test.com",
-    "Phone": "555-0101"
+    "Email": "alice.schmidt@uni-example.edu",
+    "Phone": "+49 123 456789",
+    "IdentificationNumber": "12045678",
+    "Role": "Student",
+    "Faculty": "Engineering",
+    "Department": "Computer Science"
   },
   {
     "Id": 2,
-    "Name": "Bob Mueller",
-    "Email": "bob@test.com",
-    "Phone": "555-0102"
+    "Name": "Prof. Dr. Bob Mueller",
+    "Email": "bob.mueller@uni-example.edu",
+    "Phone": "+49 89 2180-1234",
+    "IdentificationNumber": "99012345",
+    "Role": "Professor",
+    "Faculty": "Physics",
+    "Department": "Theoretical Physics"
   },
   {
     "Id": 3,
     "Name": "Charlie Davis",
-    "Email": "charlie@test.com",
-    "Phone": "555-0103"
+    "Email": "charlie.d@uni-example.edu",
+    "Phone": "+49 151 555666",
+    "IdentificationNumber": "12049988",
+    "Role": "Student",
+    "Faculty": "Arts & Humanities",
+    "Department": "Philosophy"
+  },
+  {
+    "Id": 4,
+    "Name": "Sarah Connor",
+    "Email": "s.connor@uni-example.edu",
+    "Phone": "+49 170 987654",
+    "IdentificationNumber": "88123456",
+    "Role": "Staff",
+    "Faculty": "Administration",
+    "Department": "Student Office"
+  },
+  {
+    "Id": 5,
+    "Name": "Dr. Emily Zhang",
+    "Email": "e.zhang@uni-example.edu",
+    "Phone": "+49 89 2180-9988",
+    "IdentificationNumber": "99056789",
+    "Role": "Lecturer",
+    "Faculty": "Engineering",
+    "Department": "Robotics"
+  },
+  {
+    "Id": 6,
+    "Name": "Felix Gruber",
+    "Email": "f.gruber@uni-example.edu",
+    "Phone": "+49 160 112233",
+    "IdentificationNumber": "12051122",
+    "Role": "Student",
+    "Faculty": "Business",
+    "Department": "Finance"
+  },
+  {
+    "Id": 7,
+    "Name": "Hannah Weber",
+    "Email": "h.weber@uni-example.edu",
+    "Phone": "+49 171 445566",
+    "IdentificationNumber": "12053344",
+    "Role": "Student",
+    "Faculty": "Medicine",
+    "Department": "General Medicine"
+  },
+  {
+    "Id": 8,
+    "Name": "Kevin Wolter",
+    "Email": "k.wolter@uni-example.edu",
+    "Phone": "+49 89 2180-5555",
+    "IdentificationNumber": "88224466",
+    "Role": "Staff",
+    "Faculty": "Facility Management",
+    "Department": "Building Services"
+  },
+  {
+    "Id": 9,
+    "Name": "Julia Stein",
+    "Email": "j.stein@uni-example.edu",
+    "Phone": "+49 175 667788",
+    "IdentificationNumber": "12059900",
+    "Role": "Student",
+    "Faculty": "Law",
+    "Department": "International Law"
+  },
+  {
+    "Id": 10,
+    "Name": "Prof. Martin King",
+    "Email": "m.king@uni-example.edu",
+    "Phone": "+49 89 2180-7777",
+    "IdentificationNumber": "99088776",
+    "Role": "Dean",
+    "Faculty": "Social Sciences",
+    "Department": "Sociology"
+  },
+  {
+    "Id": 11,
+    "Name": "Laura Croft",
+    "Email": "l.croft@uni-example.edu",
+    "Phone": "+49 152 998877",
+    "IdentificationNumber": "12061234",
+    "Role": "Student",
+    "Faculty": "Engineering",
+    "Department": "Archaeology"
+  },
+  {
+    "Id": 12,
+    "Name": "Tom Hardy",
+    "Email": "t.hardy@uni-example.edu",
+    "Phone": "+49 162 334455",
+    "IdentificationNumber": "12065678",
+    "Role": "Student",
+    "Faculty": "Arts & Humanities",
+    "Department": "Acting"
+  },
+  {
+    "Id": 13,
+    "Name": "Lisa Simpson",
+    "Email": "l.simpson@uni-example.edu",
+    "Phone": "+49 176 111222",
+    "IdentificationNumber": "12070001",
+    "Role": "Student",
+    "Faculty": "Science",
+    "Department": "Mathematics"
+  },
+  {
+    "Id": 14,
+    "Name": "Bruce Wayne",
+    "Email": "b.wayne@uni-example.edu",
+    "Phone": "+49 89 999999",
+    "IdentificationNumber": "99000001",
+    "Role": "Donor",
+    "Faculty": "Engineering",
+    "Department": "Technology"
+  },
+  {
+    "Id": 15,
+    "Name": "Diana Prince",
+    "Email": "d.prince@uni-example.edu",
+    "Phone": "+49 179 888888",
+    "IdentificationNumber": "88334455",
+    "Role": "Staff",
+    "Faculty": "Museum",
+    "Department": "Curator"
   }
 ]
