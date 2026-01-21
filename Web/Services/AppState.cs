@@ -27,16 +27,20 @@ public class AppState
                 NotifyStateChanged();
             }
         }
-        catch
-        {
-        }
+        catch { }
     }
 
     public async Task AddUser(User user)
     {
         if (!OpenUsers.Any(u => u.Id == user.Id))
         {
+            if (OpenUsers.Count >= 8)
+            {
+                OpenUsers.RemoveAt(0);
+            }
+
             OpenUsers.Add(user);
+
             await SaveState();
             NotifyStateChanged();
         }
