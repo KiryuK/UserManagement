@@ -1,4 +1,4 @@
-﻿@page "/user/{Id:int}/{Name}"
+﻿@page "/user/{Id}/{Name}"
 @using Application
 @inject HttpClient Http
 
@@ -36,7 +36,7 @@ else
 }
 
 @code {
-    [Parameter] public int Id { get; set; }
+    [Parameter] public string Id { get; set; } = string.Empty;
     [Parameter] public string? Name { get; set; }
 
     private User? user;

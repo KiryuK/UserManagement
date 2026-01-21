@@ -1,6 +1,6 @@
 [
   {
-    "Id": 1,
+    "Id": "1",
     "Name": "Alice Schmidt",
     "Email": "alice.schmidt@uni-example.edu",
     "Phone": "+49 123 456789",
@@ -10,7 +10,7 @@
     "Department": "Computer Science"
   },
   {
-    "Id": 2,
+    "Id": "2",
     "Name": "Prof. Dr. Bob Mueller",
     "Email": "bob.mueller@uni-example.edu",
     "Phone": "+49 89 2180-1234",
@@ -20,7 +20,7 @@
     "Department": "Theoretical Physics"
   },
   {
-    "Id": 3,
+    "Id": "3",
     "Name": "Charlie Davis",
     "Email": "charlie.d@uni-example.edu",
     "Phone": "+49 151 555666",
@@ -30,7 +30,7 @@
     "Department": "Philosophy"
   },
   {
-    "Id": 4,
+    "Id": "4",
     "Name": "Sarah Connor",
     "Email": "s.connor@uni-example.edu",
     "Phone": "+49 170 987654",
@@ -40,7 +40,7 @@
     "Department": "Student Office"
   },
   {
-    "Id": 5,
+    "Id": "5",
     "Name": "Dr. Emily Zhang",
     "Email": "e.zhang@uni-example.edu",
     "Phone": "+49 89 2180-9988",
@@ -50,7 +50,7 @@
     "Department": "Robotics"
   },
   {
-    "Id": 6,
+    "Id": "6",
     "Name": "Felix Gruber",
     "Email": "f.gruber@uni-example.edu",
     "Phone": "+49 160 112233",
@@ -60,7 +60,7 @@
     "Department": "Finance"
   },
   {
-    "Id": 7,
+    "Id": "7",
     "Name": "Hannah Weber",
     "Email": "h.weber@uni-example.edu",
     "Phone": "+49 171 445566",
@@ -70,7 +70,7 @@
     "Department": "General Medicine"
   },
   {
-    "Id": 8,
+    "Id": "8",
     "Name": "Kevin Wolter",
     "Email": "k.wolter@uni-example.edu",
     "Phone": "+49 89 2180-5555",
@@ -80,7 +80,7 @@
     "Department": "Building Services"
   },
   {
-    "Id": 9,
+    "Id": "9",
     "Name": "Julia Stein",
     "Email": "j.stein@uni-example.edu",
     "Phone": "+49 175 667788",
@@ -90,7 +90,7 @@
     "Department": "International Law"
   },
   {
-    "Id": 10,
+    "Id": "10",
     "Name": "Prof. Martin King",
     "Email": "m.king@uni-example.edu",
     "Phone": "+49 89 2180-7777",
@@ -100,7 +100,7 @@
     "Department": "Sociology"
   },
   {
-    "Id": 11,
+    "Id": "11",
     "Name": "Laura Croft",
     "Email": "l.croft@uni-example.edu",
     "Phone": "+49 152 998877",
@@ -110,7 +110,7 @@
     "Department": "Archaeology"
   },
   {
-    "Id": 12,
+    "Id": "12",
     "Name": "Tom Hardy",
     "Email": "t.hardy@uni-example.edu",
     "Phone": "+49 162 334455",
@@ -120,7 +120,7 @@
     "Department": "Acting"
   },
   {
-    "Id": 13,
+    "Id": "13",
     "Name": "Lisa Simpson",
     "Email": "l.simpson@uni-example.edu",
     "Phone": "+49 176 111222",
@@ -130,7 +130,7 @@
     "Department": "Mathematics"
   },
   {
-    "Id": 14,
+    "Id": "14",
     "Name": "Bruce Wayne",
     "Email": "b.wayne@uni-example.edu",
     "Phone": "+49 89 999999",
@@ -140,7 +140,7 @@
     "Department": "Technology"
   },
   {
-    "Id": 15,
+    "Id": "15",
     "Name": "Diana Prince",
     "Email": "d.prince@uni-example.edu",
     "Phone": "+49 179 888888",
