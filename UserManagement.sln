@@ -11,8 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{6B0F3CF9-58D3-4326-B059-59E18D341DFA}"
 	ProjectSection(SolutionItems) = preProject
-		Dokumentation.txt = Dokumentation.txt
-		Graph_Implementierung.txt = Graph_Implementierung.txt
+		Dokumentation.md = Dokumentation.md
+		Graph_Implementierung.md = Graph_Implementierung.md
 	EndProjectSection
 EndProject
 Global
